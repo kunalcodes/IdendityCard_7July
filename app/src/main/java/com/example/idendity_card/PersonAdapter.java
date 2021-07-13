@@ -12,16 +12,18 @@ import java.util.ArrayList;
 public class PersonAdapter extends RecyclerView.Adapter<PersonViewHolder> {
 
     private ArrayList<Person> personList;
+    private ItemClickListener itemClickListener;
 
-    public PersonAdapter(ArrayList<Person> personArrayList){
+    public PersonAdapter(ArrayList<Person> personArrayList, ItemClickListener itemClickListener){
         personList = personArrayList;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
     @Override
     public PersonViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
-        return new PersonViewHolder(view);
+        return new PersonViewHolder(view, itemClickListener);
     }
 
     @Override
